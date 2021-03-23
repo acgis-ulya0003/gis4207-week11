@@ -3,13 +3,15 @@ import sys
 def main():
 
     if len(sys.argv) != 2:
-        print('Usage: cursor03.py <province name>')
+        print('Usage: cursor04.py <province name>')
     else:
         import arcpy
 
         wsp = r'..\..\data\Canada\Canada.gdb'
         Maj_City_fc = r'..\..\data\Canada\Canada.gdb\MajorCities'
         arcpy.env.workspace = wsp
+
+        get_text = arcpy.GetParameterAsText(0)
 
         field = ['NAME', 'PROV']
 
@@ -20,17 +22,16 @@ def main():
         prov_code = sys.argv[1].upper()
 
         search_fields = arcpy.AddFieldDelimiters(wsp, 'PROV')
+        field_names = ["NAME", "PROV", "SHAPE@XY"]
         where_clause = f"{search_fields} = '{prov_code}'"
-        
 
-        cursor = arcpy.da.SearchCursor(Maj_City_fc, field, where_clause)
+        count = 0
 
-        print('Name,Prov,Longitude,Latitude')
-
-        for row in cursor:
-            
-            print(str(row).strip('(\'').strip('\')'))            
-            count += 1
+        with arcpy.da.SearchCursor(Maj_City_fc, field_names, where_clause) as cursor:
+            for row in cursor:
+                count += 1                
+                x, y = row[2]
+                print(row[0] + ', ' + row[1] + ', ' "{}, {}".format(x, y))
 
         count = str(count)
         print('\n')
@@ -39,4 +40,4 @@ def main():
 if __name__ == '__main__':
     main()
 
-#python cursor03.py on
+#python cursor04.py on
