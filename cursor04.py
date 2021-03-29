@@ -7,8 +7,8 @@ def main():
     else:
         import arcpy
 
-        wsp = r'..\..\data\Canada\Canada.gdb'
-        Maj_City_fc = r'..\..\data\Canada\Canada.gdb\MajorCities'
+        wsp = r'..\..\..\..\data\Canada\Canada.gdb'
+        Maj_City_fc = r'..\..\..\..\data\Canada\Canada.gdb\MajorCities'
         arcpy.env.workspace = wsp
 
         get_text = arcpy.GetParameterAsText(0)

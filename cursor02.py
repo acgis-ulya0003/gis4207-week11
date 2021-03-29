@@ -7,8 +7,8 @@ def main():
     else:
         import arcpy
 
-        wsp = r'..\..\data\Canada'
-        Maj_City_fc = r'..\..\data\Canada\Can_Mjr_Cities.shp'
+        wsp = r'..\..\..\..\data\Canada'
+        Maj_City_fc = r'..\..\..\..\data\Canada\Can_Mjr_Cities.shp'
         arcpy.env.workspace = wsp
 
         field = ['NAME', 'PROV']

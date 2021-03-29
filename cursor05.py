@@ -2,8 +2,8 @@ import arcpy
 
 def main():
 
-    wsp = r'..\..\data\Canada\Canada.gdb'
-    Maj_City_fc = r'..\..\data\Canada\Canada.gdb\MajorCities'
+    wsp = r'..\..\..\..\data\Canada\Canada.gdb'
+    Maj_City_fc = r'..\..\..\..\data\Canada\Canada.gdb\MajorCities'
     arcpy.env.workspace = wsp
 
     field_names = ["NAME", "PROV", "SHAPE@X", "SHAPE@Y", "UTM_MAP"]
